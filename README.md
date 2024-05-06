@@ -16,7 +16,7 @@ El proyecto se organiza en los siguientes directorios:
         - 📄 Buscador.java
         - 📄 Analisis.java
     - 📁 funciones
-        - 📄 HospitalManagementSystem.java
+        - 📄 EdicionPacientes.java
         - 📄 ExportImportDatos.java
         - 📄 GestionUsuarios.java
     - 📁 vista
