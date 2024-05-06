@@ -8,6 +8,7 @@ import java.util.List;
 /**
  *
  * @authors Johan Stiven Rengifo y Tatiana Muñoz Daza
+ * Modelo de Roles, Asignación y Gestion de los mismos
  */
 
 // Enum para los roles de usuario

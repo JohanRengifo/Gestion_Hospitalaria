@@ -13,13 +13,17 @@ El proyecto se organiza en los siguientes directorios:
         - 📄 Pacientes.java
         - 📄 Doctores.java
         - 📄 Enfermeros.java
-        - 📄 Buscador.java
+        - 📄 Buscador.java (BETA)
         - 📄 Analisis.java
     - 📁 funciones
         - 📄 EdicionPacientes.java
-        - 📄 ExportImportDatos.java
-        - 📄 GestionUsuarios.java
+        - 📄 ExportImportDatos.java (BETA)
+        - 📄 GestionUsuarios.java (BETA)
     - 📁 vista
+    - 📁 services
+        - 📄 DatabaseService.java (BETA)
+        - 📄 EventLoggerService.java (BETA)
+        - 📄 ReportService.java (BETA)
 - 📁 build: Contiene los archivos de construcción del proyecto.
 - 📄 README.md: Documentación del proyecto.
 - 📄 manidest.mf: Manifiesto del proyecto.

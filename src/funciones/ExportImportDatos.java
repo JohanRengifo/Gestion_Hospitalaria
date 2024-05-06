@@ -1,6 +1,5 @@
 package funciones;
 import modelo.Pacientes;
-
 import java.io.*;
 import java.util.ArrayList;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -10,7 +9,11 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import java.io.FileNotFoundException;
 import java.util.List;
-
+/**
+ *
+ * @authors Johan Stiven Rengifo y Tatiana Muñoz Daza
+ * Exportación de Datos, desde los Botones de la UI
+ */
 public class ExportImportDatos {
 
     // Exportar la lista de pacientes a un archivo CSV

@@ -4,6 +4,7 @@ import java.util.List;
 /**
  *
  * @authors Johan Stiven Rengifo y Tatiana Muñoz Daza
+ * API de la Barra de Busqueda
  */
 
 public class Buscador {

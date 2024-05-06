@@ -3,6 +3,7 @@ package modelo;
 /**
  *
  * @authors Johan Stiven Rengifo y Tatiana Muñoz Daza
+ * Modelo de los Analisis
  */
 import java.util.Date;
 

@@ -3,6 +3,7 @@ package modelo;
 /**
  *
  * @authors Johan Stiven Rengifo y Tatiana Muñoz Daza
+ * Modelo de datos de los Doctores
  */
 public class Doctores {
     private int doctorId;

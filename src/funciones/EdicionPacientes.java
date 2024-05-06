@@ -5,6 +5,7 @@ import java.util.List;
 /**
  *
  * @authors Johan Stiven Rengifo y Tatiana Muñoz Daza
+ * Edicion de los Pacientes, Desde Botones de la UI
  */
 public class EdicionPacientes {
     // Editar datos de un paciente

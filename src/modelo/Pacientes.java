@@ -4,6 +4,7 @@ import java.util.ArrayList;
 /**
  *
  * @authors Johan Stiven Rengifo y Tatiana Muñoz Daza
+ * Modelo de datos Pacientes
  */
 
 public class Pacientes {
