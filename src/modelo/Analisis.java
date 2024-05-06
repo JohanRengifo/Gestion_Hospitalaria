@@ -17,6 +17,7 @@ public class Analisis {
     public Analisis(int numeroReferencia, String tipo, Date fechaRealizacion, Doctores doctorSolicitante, Enfermeros enfermeroResponsable) {
         this.numeroReferencia = numeroReferencia;
         this.tipo = tipo;
+        
         this.fechaRealizacion = fechaRealizacion;
         this.DoctorSolicitante = doctorSolicitante;
         this.enfermeroResponsable = enfermeroResponsable;
