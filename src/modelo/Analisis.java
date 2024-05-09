@@ -1,51 +1,49 @@
 package modelo;
-
-/**
- *
- * @authors Johan Stiven Rengifo y Tatiana Muñoz Daza
- * Modelo de los Analisis
- */
 import java.util.Date;
 
 public class Analisis {
-    private int numeroReferencia;
-    private String tipo;
+    private int id;
+    private int idPaciente;
+    private String tipoAnalisis;
     private Date fechaRealizacion;
-    private Doctores DoctorSolicitante;
-    private Enfermeros enfermeroResponsable;
-    private String resultados;
-
-    public Analisis(int numeroReferencia, String tipo, Date fechaRealizacion, Doctores doctorSolicitante, Enfermeros enfermeroResponsable) {
-        this.numeroReferencia = numeroReferencia;
-        this.tipo = tipo;
-        
+    private int medicoSolicitante;
+    private int enfermeroRealizador;
+    private String resultado;
+    
+    // Constructor
+    public Analisis(int id, int idPaciente, String tipoAnalisis, Date fechaRealizacion, int medicoSolicitante, int enfermeroRealizador, String resultado) {
+        this.id = id;
+        this.idPaciente = idPaciente;
+        this.tipoAnalisis = tipoAnalisis;
         this.fechaRealizacion = fechaRealizacion;
-        this.DoctorSolicitante = doctorSolicitante;
-        this.enfermeroResponsable = enfermeroResponsable;
+        this.medicoSolicitante = medicoSolicitante;
+        this.enfermeroRealizador = enfermeroRealizador;
+        this.resultado = resultado;
     }
     
-    public Doctores getDoctorSolicitante() {
-        return DoctorSolicitante;
+    // Getters y setters
+    public int getId() {
+        return id;
     }
 
-    public void setDoctorSolicitante(Doctores DoctorSolicitante) {
-        this.DoctorSolicitante = DoctorSolicitante;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getNumeroReferencia() {
-        return numeroReferencia;
+    public int getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setNumeroReferencia(int numeroReferencia) {
-        this.numeroReferencia = numeroReferencia;
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTipoAnalisis() {
+        return tipoAnalisis;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoAnalisis(String tipoAnalisis) {
+        this.tipoAnalisis = tipoAnalisis;
     }
 
     public Date getFechaRealizacion() {
@@ -56,23 +54,28 @@ public class Analisis {
         this.fechaRealizacion = fechaRealizacion;
     }
 
-    public Enfermeros getEnfermeroResponsable() {
-        return enfermeroResponsable;
+    public int getMedicoSolicitante() {
+        return medicoSolicitante;
     }
 
-    public void setEnfermeroResponsable(Enfermeros enfermeroResponsable) {
-        this.enfermeroResponsable = enfermeroResponsable;
+    public void setMedicoSolicitante(int medicoSolicitante) {
+        this.medicoSolicitante = medicoSolicitante;
     }
 
-    public String getResultados() {
-        return resultados;
+    public int getEnfermeroRealizador() {
+        return enfermeroRealizador;
     }
 
-    public void setResultados(String resultados) {
-        this.resultados = resultados;
+    public void setEnfermeroRealizador(int enfermeroRealizador) {
+        this.enfermeroRealizador = enfermeroRealizador;
     }
 
+    public String getResultado() {
+        return resultado;
+    }
 
-
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
     
 }
