@@ -10,22 +10,34 @@ El proyecto se organiza en los siguientes directorios:
 
 - 📁 src
     - 📁 modelo
-        - 📄 Pacientes.java
-        - 📄 Doctores.java
-        - 📄 Enfermeros.java
-        - 📄 Buscador.java (BETA)
+        - 📁 fonts
+            - 📄 TimesNewRoman.ttf
         - 📄 Analisis.java
+        - 📄 EmpleadoSanitario.java
+        - 📄 ModelosDB.sql
+        - 📄 paciente.java 
+        - 📄 RegistroBusqueda.java
+        - 📄 RolUsuario.java 
+        - 📄 Usuario.java 
     - 📁 funciones
-        - 📄 EdicionPacientes.java
-        - 📄 ExportImportDatos.java (BETA)
-        - 📄 GestionUsuarios.java (BETA)
+        - 📄 Buscador.java
+        - 📄 ControlLogin.java
+        - 📄 DBManager.java
+        - 📄 EdicionUsuario.java
+        - 📄 EventLoggerService.java
+        - 📄 ImportarExportarDatos.java
+        - 📄 RegistroAnalisis.java
+        - 📄 RegistroUsuarios.java
+        - 📄 ReportService.java
     - 📁 vista
-    - 📁 services
-        - 📄 DatabaseService.java (BETA)
-        - 📄 EventLoggerService.java (BETA)
-        - 📄 ReportService.java (BETA)
+        - 📄 RegistroAnalisisVentana.java
+        - 📄 Login.java
+        - 📄 ConsultaAnalisisPAciente.java
+        - 📄 ConsultaAnalisisVentana.java
+        - 📄 EmpleadosVentana.java
+        - 📄 PacienteVentana.java
 - 📁 build: Contiene los archivos de construcción del proyecto.
 - 📄 README.md: Documentación del proyecto.
 - 📄 manidest.mf: Manifiesto del proyecto.
+- 📄 Database.pdf: Representa las Tablas y relaciones de la BD
 - 📄 build.xml: Archivo de configuración de Apache Ant.
-- 📄 pom.xml: Archivo de configuración de dependencias.
