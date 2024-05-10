@@ -4,6 +4,10 @@
  */
 package vista;
 
+import funciones.DBManager;
+import javax.swing.JOptionPane;
+import modelo.Analisis;
+
 /**
  *
  * @author Johan
@@ -27,30 +31,87 @@ public class PacienteVentana extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        VerAnalsisisBtn = new javax.swing.JButton();
+        ExpAnalisisbtn = new javax.swing.JButton();
+        VerHsClBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Paciente");
+
+        VerAnalsisisBtn.setText("Ver mis Analizis");
+        VerAnalsisisBtn.setActionCommand("Ver Analisis");
+        VerAnalsisisBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerAnalsisisBtnActionPerformed(evt);
+            }
+        });
+
+        ExpAnalisisbtn.setText("Exportar Analisis");
+
+        VerHsClBtn.setText("Ver mi Historia Clinica");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jLabel1)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ExpAnalisisbtn)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(VerAnalsisisBtn)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(VerHsClBtn)))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jLabel1)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VerAnalsisisBtn)
+                    .addComponent(VerHsClBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ExpAnalisisbtn)
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void VerAnalsisisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerAnalsisisBtnActionPerformed
+        String idPacienteStr = JOptionPane.showInputDialog(this, "Ingrese su número de ID de paciente:");
+        try {
+            // Convertir el ID del paciente a entero
+            int idPaciente = Integer.parseInt(idPacienteStr);
+
+            // Consultar en la base de datos si existe el paciente con el ID proporcionado
+            boolean pacienteExiste = DBManager.pacienteExiste(idPaciente);
+
+            if (pacienteExiste) {
+                // Si el paciente existe, obtener y mostrar sus análisis asociados
+                java.util.List<Analisis> analisisPaciente = DBManager.obtenerAnalisisPaciente(idPaciente);
+
+                // Verificar si el paciente tiene análisis asociados
+                if (!analisisPaciente.isEmpty()) {
+                    // Mostrar los análisis en una nueva ventana
+                    ConsultaAnalisisPaciente mostrarAnalisisVentana = new ConsultaAnalisisPaciente(analisisPaciente);
+                    mostrarAnalisisVentana.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "El paciente no tiene análisis asociados.", "Sin Análisis", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "El número de ID de paciente ingresado no existe.", "Paciente No Encontrado", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número válido para el ID de paciente.", "Error de Entrada", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_VerAnalsisisBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +149,9 @@ public class PacienteVentana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ExpAnalisisbtn;
+    private javax.swing.JButton VerAnalsisisBtn;
+    private javax.swing.JButton VerHsClBtn;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

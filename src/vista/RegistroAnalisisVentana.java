@@ -5,38 +5,27 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import modelo.Analisis;
-import funciones.RegistroAnalisis;
 import java.util.Date;
 import javax.swing.DefaultListModel;
 
 public class RegistroAnalisisVentana extends javax.swing.JFrame {
-    
+
     private DefaultListModel<String> idPacienteListModel;
-    /**
-     * Creates new form RegistroAnalisisVentana
-     */
+    
     public RegistroAnalisisVentana() {
         initComponents();
-        
         idPacienteListModel = new DefaultListModel<>();
-        
-        // Obtener los IDs de pacientes y agregarlos al modelo de lista
         obtenerIDsDePacientes();
     }
     
-    // #######################
-    private void obtenerIDsDePacientes() {
-        idPacienteListModel.clear(); // Limpiar el modelo de lista antes de agregar nuevos elementos
-        
-        // Llamar a la función en RegistroAnalisis.java para obtener los IDs de pacientes
+    private void obtenerIDsDePacientes(){
+        idPacienteListModel.clear();
         java.util.List<Integer> idPacientes = funciones.RegistroAnalisis.PacienteDAO.obtenerIDsPacientes();
-        
-        // Agregar cada ID de paciente al modelo de lista
-        for (Integer id : idPacientes) {
+        for (Integer id : idPacientes){
             idPacienteListModel.addElement(String.valueOf(id));
         }
+        idpacienteList.setModel(idPacienteListModel);
     }
-    // ###########
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,26 +36,41 @@ public class RegistroAnalisisVentana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Title = new javax.swing.JLabel();
-        RegistrarBtn = new javax.swing.JButton();
         idPacienteTextField = new javax.swing.JTextField();
         tipoAnalisisTextField = new javax.swing.JTextField();
         fechaRealizacionDatePicker = new javax.swing.JTextField();
         medicoSolicitanteTextField = new javax.swing.JTextField();
         enfermeroRealizadorTextField = new javax.swing.JTextField();
         resultadoTextField = new javax.swing.JTextField();
+        RegistrarBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        idpacienteList = new javax.swing.JList<>();
+        Title = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        idpacienteList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Title.setText("Registro Analisis");
+        idPacienteTextField.setMinimumSize(new java.awt.Dimension(150, 22));
+
+        tipoAnalisisTextField.setMaximumSize(new java.awt.Dimension(150, 25));
+        tipoAnalisisTextField.setMinimumSize(new java.awt.Dimension(150, 25));
+
+        fechaRealizacionDatePicker.setMaximumSize(new java.awt.Dimension(150, 25));
+        fechaRealizacionDatePicker.setMinimumSize(new java.awt.Dimension(150, 25));
+
+        medicoSolicitanteTextField.setMaximumSize(new java.awt.Dimension(150, 25));
+        medicoSolicitanteTextField.setMinimumSize(new java.awt.Dimension(150, 25));
+
+        enfermeroRealizadorTextField.setMaximumSize(new java.awt.Dimension(150, 25));
+        enfermeroRealizadorTextField.setMinimumSize(new java.awt.Dimension(150, 25));
+
+        resultadoTextField.setMaximumSize(new java.awt.Dimension(150, 25));
+        resultadoTextField.setMinimumSize(new java.awt.Dimension(150, 25));
 
         RegistrarBtn.setText("Registrar");
         RegistrarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -75,148 +79,134 @@ public class RegistroAnalisisVentana extends javax.swing.JFrame {
             }
         });
 
-        idPacienteTextField.setPreferredSize(new java.awt.Dimension(150, 22));
+        idpacienteList.setModel(new javax.swing.DefaultListModel<>());
+        jScrollPane1.setViewportView(idpacienteList);
 
-        tipoAnalisisTextField.setPreferredSize(new java.awt.Dimension(150, 22));
+        Title.setText("Registro Analisis");
 
-        fechaRealizacionDatePicker.setText("yyyy/mm/dd");
-        fechaRealizacionDatePicker.setPreferredSize(new java.awt.Dimension(150, 22));
+        jLabel1.setText("Id Del Paciente");
 
-        enfermeroRealizadorTextField.setPreferredSize(new java.awt.Dimension(150, 22));
+        jLabel2.setText("Tipo de Analisis:");
 
-        resultadoTextField.setPreferredSize(new java.awt.Dimension(150, 22));
+        jLabel3.setText("Fecha (yyyy-mm-dd)");
 
-        jLabel1.setText("idPaciente");
+        jLabel4.setText("Medico que la realizo (ID)");
 
-        jLabel2.setText("tipoAnalisis");
+        jLabel5.setText("Enfermero que la realizo (ID)");
 
-        jLabel3.setText("fecharealizacion");
-
-        jLabel4.setText("medicosolicitante");
-
-        jLabel5.setText("enfermero realizador");
-
-        jLabel6.setText("Resultado");
-
-        idpacienteList.setModel(new javax.swing.AbstractListModel<String> obtenerIDsPacientes() {
-            String[] strings = {};
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(idpacienteList);
+        jLabel6.setText("Resultados (Observaciones)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idPacienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Title)
-                            .addComponent(RegistrarBtn)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(jLabel2)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tipoAnalisisTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fechaRealizacionDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(medicoSolicitanteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(enfermeroRealizadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(180, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tipoAnalisisTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(idPacienteTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fechaRealizacionDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(enfermeroRealizadorTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(resultadoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(medicoSolicitanteTextField))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(213, Short.MAX_VALUE))
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(resultadoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(297, 297, 297)
+                .addComponent(RegistrarBtn)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(44, 44, 44)
                 .addComponent(Title)
-                .addGap(51, 51, 51)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idPacienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(idPacienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tipoAnalisisTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(37, 37, 37)
+                            .addComponent(jLabel5))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(tipoAnalisisTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(fechaRealizacionDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(medicoSolicitanteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4))
+                            .addGap(3, 3, 3)
+                            .addComponent(enfermeroRealizadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fechaRealizacionDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(medicoSolicitanteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enfermeroRealizadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(resultadoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resultadoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addComponent(RegistrarBtn)
-                .addGap(89, 89, 89))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegistrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarBtnActionPerformed
-    // Obtener los datos del formulario
-        int idPaciente = Integer.parseInt(idPacienteTextField.getText());
+        String idPacienteSeleccionado = idpacienteList.getSelectedValue();
+        if(idPacienteSeleccionado == null){
+            JOptionPane.showMessageDialog(this, "Seleccione un Paciente", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int idPaciente = Integer.parseInt(idPacienteSeleccionado);
         String tipoAnalisis = tipoAnalisisTextField.getText();
-
-        // Obtener el texto del JTextField fechaRealizacionDatePicker
         String fechaRealizacionText = fechaRealizacionDatePicker.getText();
-
-        // Convertir el texto a un objeto Date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Formato de fecha esperado
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaRealDate = null;
-        try {
+        try{
             fechaRealDate = dateFormat.parse(fechaRealizacionText);
-        } catch (ParseException e) {
+        } catch (ParseException e){
             e.printStackTrace();
         }
-
-        // Verificar si la fecha se pudo parsear correctamente
-        if (fechaRealDate != null) {
-            // Convertir la fecha a un formato adecuado para la base de datos
+        if (fechaRealDate != null){
             java.sql.Date fechaRealiDate = new java.sql.Date(fechaRealDate.getTime());
-
             int medicoSolicitante = Integer.parseInt(medicoSolicitanteTextField.getText());
             int enfermeroRealizador = Integer.parseInt(enfermeroRealizadorTextField.getText());
             String resultado = resultadoTextField.getText();
-
-            // Crear un nuevo objeto de análisis con los datos del formulario
             Analisis nuevoAnalisis = new Analisis(idPaciente, tipoAnalisis, fechaRealiDate, medicoSolicitante, enfermeroRealizador, resultado);
-
-            // Intentar registrar el análisis en la base de datos
             boolean exito = RegistroAnalisis.registrarAnalisis(nuevoAnalisis);
-
-            // Mostrar mensaje de éxito o error según el resultado de la operación
             if (exito) {
                 JOptionPane.showMessageDialog(this, "El análisis se ha registrado correctamente.", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "No se pudo registrar el análisis. Por favor, inténtelo de nuevo.", "Error de Registro", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            // Mostrar un mensaje de error si la fecha no se pudo parsear correctamente
+            } 
+        } else{
             JOptionPane.showMessageDialog(this, "La fecha ingresada no es válida. Por favor, ingrese una fecha en el formato yyyy-MM-dd.", "Error de Formato de Fecha", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_RegistrarBtnActionPerformed
@@ -269,7 +259,7 @@ public class RegistroAnalisisVentana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField medicoSolicitanteTextField;
     private javax.swing.JTextField resultadoTextField;
     private javax.swing.JTextField tipoAnalisisTextField;

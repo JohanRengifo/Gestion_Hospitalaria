@@ -1,20 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Johan
- */
 public class EmpleadosVentana extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DoctorVentana
-     */
     public EmpleadosVentana() {
         initComponents();
     }
@@ -33,8 +23,13 @@ public class EmpleadosVentana extends javax.swing.JFrame {
         AnalisisBtn = new javax.swing.JButton();
         Pacientesbtn = new javax.swing.JButton();
         DocumentosBtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        HistCliniTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        pacienteTextField = new javax.swing.JTextField();
+        medicoTextField = new javax.swing.JTextField();
+        fechaTextField = new javax.swing.JTextField();
+        consultarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(500, 500));
@@ -51,83 +46,110 @@ public class EmpleadosVentana extends javax.swing.JFrame {
         });
 
         Pacientesbtn.setText("Pacientes");
+        Pacientesbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PacientesbtnActionPerformed(evt);
+            }
+        });
 
         DocumentosBtn.setText("Documentos");
-
-        HistCliniTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Id_paciente", "fecha_realizacion", "medico_solicitante", "enfermero_realizador", "resultado", "id_usuario_medico", "id_usuario_enfermero"
+        DocumentosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DocumentosBtnActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(HistCliniTable);
+        });
+
+        jLabel1.setText("ID Paciente:");
+
+        jLabel2.setText("ID Médico:");
+
+        jLabel3.setText("Fecha:");
+
+        consultarButton.setText("Consultar");
+        consultarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(TitleWelcome))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(AnalisisBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(464, 464, 464)
-                        .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Pacientesbtn)
-                        .addGap(31, 31, 31)
-                        .addComponent(DocumentosBtn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(247, 247, 247))
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(TitleWelcome))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(AnalisisBtn)
+                        .addGap(25, 25, 25)
+                        .addComponent(Pacientesbtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DocumentosBtn)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(27, 27, 27)
                 .addComponent(TitleWelcome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AnalisisBtn)
                     .addComponent(Pacientesbtn)
                     .addComponent(DocumentosBtn))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9))
+                .addGap(167, 167, 167))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AnalisisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalisisBtnActionPerformed
-        // Mostrar un cuadro de diálogo de confirmación
-        int opcion = JOptionPane.showConfirmDialog(this, "¿Desea consultar un análisis?", "Seleccionar Opción", JOptionPane.YES_NO_OPTION);
-
-        if (opcion == JOptionPane.YES_OPTION) {
-            // Abrir la ventana de consulta de análisis
+        int opcion = JOptionPane.showOptionDialog(this,
+                "¿Qué deseas realizar?",
+                "Seleccionar Opción",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                new String[]{"Consultar", "Registrar"},
+                "Consultar");
+        if (opcion == 0) {
             ConsultaAnalisisVentana consultaAnalisisVentana = new ConsultaAnalisisVentana();
             consultaAnalisisVentana.setVisible(true);
-        } else if (opcion == JOptionPane.NO_OPTION) {
-            // Abrir la ventana de registro de análisis
+        } else if (opcion == 1) {
             RegistroAnalisisVentana registroAnalisisVentana = new RegistroAnalisisVentana();
             registroAnalisisVentana.setVisible(true);
-        }
+        } 
     }//GEN-LAST:event_AnalisisBtnActionPerformed
+
+    private void PacientesbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PacientesbtnActionPerformed
+        int opcion =JOptionPane.showOptionDialog(this,
+                "que deseas realizar?",
+                "Seleccionar Opcion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                new String[]{"consultar","registrar" } ,"consultar");
+                if (opcion == 0){
+                PacienteVentana PacienteVentana = new PacienteVentana ();
+                PacienteVentana.setVisible(true);
+                }else if (opcion ==1){
+                PacienteVentana pacienteVentana = new PacienteVentana ();
+                pacienteVentana.setVisible(true);
+                }
+    }//GEN-LAST:event_PacientesbtnActionPerformed
+
+    private void DocumentosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocumentosBtnActionPerformed
+        
+    }//GEN-LAST:event_DocumentosBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,9 +191,14 @@ public class EmpleadosVentana extends javax.swing.JFrame {
     private javax.swing.JButton AnalisisBtn;
     private javax.swing.JButton DocumentosBtn;
     private javax.swing.JPanel Fondo;
-    private javax.swing.JTable HistCliniTable;
     private javax.swing.JButton Pacientesbtn;
     private javax.swing.JLabel TitleWelcome;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton consultarButton;
+    private javax.swing.JTextField fechaTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField medicoTextField;
+    private javax.swing.JTextField pacienteTextField;
     // End of variables declaration//GEN-END:variables
 }
