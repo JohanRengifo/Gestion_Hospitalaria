@@ -20,7 +20,7 @@ public class ConsultaAnalisisVentana extends javax.swing.JFrame {
     
     private void cargarResultados() {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.setRowCount(0); // Limpiar la tabla
+        modelo.setRowCount(0);
 
         try {
             connection = DBManager.getConnection();

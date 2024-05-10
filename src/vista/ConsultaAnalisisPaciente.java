@@ -12,23 +12,24 @@ public class ConsultaAnalisisPaciente extends javax.swing.JFrame {
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
+    private int idPaciente;
     
-    public ConsultaAnalisisPaciente() {
+     public ConsultaAnalisisPaciente(int idPaciente) {
         initComponents();
-        cargarResultados();
+        this.idPaciente = idPaciente;
+        cargarResultados(idPaciente);
     }
     
-    private void cargarResultados() {
+    private void cargarResultados(int idPaciente) {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.setRowCount(0); // Limpiar la tabla
+        modelo.setRowCount(0);
 
         try {
             connection = DBManager.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM analisis");
+            resultSet = statement.executeQuery("SELECT * FROM analisis WHERE id_paciente = " + idPaciente);
 
             while (resultSet.next()) {
-                int idPaciente = resultSet.getInt("id_paciente");
                 String tipoAnalisis = resultSet.getString("tipo_analisis");
                 String resultados = resultSet.getString("resultado");
 
@@ -136,7 +137,7 @@ public class ConsultaAnalisisPaciente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaAnalisisPaciente().setVisible(true);
+                new ConsultaAnalisisPaciente(idPaciente).setVisible(true);
             }
         });
     }

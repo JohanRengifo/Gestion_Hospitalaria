@@ -9,9 +9,8 @@ public class EventLoggerService {
 
     public static boolean registrarEvento(int idUsuario, String tipoEvento) {
         String query = "INSERT INTO Eventos (id_usuario, tipo_evento) VALUES (?, ?)";
-
         try (Connection connection = DBManager.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+            PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, idUsuario);
             statement.setString(2, tipoEvento);
             int rowsInserted = statement.executeUpdate();
@@ -24,9 +23,8 @@ public class EventLoggerService {
 
     public static ResultSet consultarEventosPorUsuarioYTipo(int idUsuario, String tipoEvento) {
         String query = "SELECT * FROM Eventos WHERE id_usuario = ? AND tipo_evento = ?";
-
         try (Connection connection = DBManager.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+            PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, idUsuario);
             statement.setString(2, tipoEvento);
             return statement.executeQuery();

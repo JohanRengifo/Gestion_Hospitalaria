@@ -6,9 +6,6 @@ import modelo.RolUsuario;
 
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
     public Login() {
         initComponents();
     }
@@ -137,41 +134,30 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
-        // Recolectar datos ingresados por el usuario
         String nombreUsuario = UserInput.getText();
-        String password = new String(PassInput.getPassword()); // Convierte los caracteres a String
-
-        // Verificar las credenciales del usuario y obtener su rol
+        String password = new String(PassInput.getPassword());
         RolUsuario rolUsuario = ControlLogin.verificarCredenciales(nombreUsuario, password);
 
         if (rolUsuario != null) {
-            // Credenciales correctas, determinar la ventana correspondiente según el rol
             switch (rolUsuario) {
                 case paciente:
-                    // Abrir ventana para pacientes
                     PacienteVentana pacienteVentana = new PacienteVentana(); 
                     pacienteVentana.setVisible(true);
                     break;
                 case enfermero:
-                    // Abrir ventana para enfermeros
                     EmpleadosVentana enfermeroVentana = new EmpleadosVentana(); 
                     enfermeroVentana.setVisible(true);
                     break;
                 case doctor:
-                    // Abrir ventana para doctores
                     EmpleadosVentana doctorVentana = new EmpleadosVentana(); 
                     doctorVentana.setVisible(true);
                     break;
                 default:
-                    // Rol no reconocido, mostrar mensaje de error
                     JOptionPane.showMessageDialog(this, "Rol de usuario no reconocido", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
                     break;
             }
-
-            // Cerrar la ventana actual (ventana de inicio de sesión)
             this.dispose();
         } else {
-            // Credenciales incorrectas, mostrar mensaje de error
             JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_LoginBtnActionPerformed

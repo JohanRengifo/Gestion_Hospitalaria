@@ -2,6 +2,13 @@ package vista;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import funciones.DBManager;
+import funciones.ReportService;
+import java.io.File;
+import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import modelo.Analisis;
 
 public class EmpleadosVentana extends javax.swing.JFrame {
 
@@ -148,7 +155,33 @@ public class EmpleadosVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_PacientesbtnActionPerformed
 
     private void DocumentosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocumentosBtnActionPerformed
-        
+        String idPacienteStr = JOptionPane.showInputDialog(this, "Ingrese su número de ID de paciente:");
+        try {
+            if (idPacienteStr != null && !idPacienteStr.isEmpty()) {
+                int idPaciente = Integer.parseInt(idPacienteStr);
+                List<Analisis> analisisPaciente = DBManager.obtenerAnalisisPaciente(idPaciente);
+
+                if (!analisisPaciente.isEmpty()) {
+                    JFileChooser chooser = new JFileChooser();
+                    chooser.setDialogTitle("Seleccionar Carpeta de Salida");
+                    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+                    int result = chooser.showOpenDialog(this);
+                    if (result == JFileChooser.APPROVE_OPTION) {
+                        File selectedFolder = chooser.getSelectedFile();
+                        String carpetaSalida = selectedFolder.getAbsolutePath();
+                        ReportService.generarInformeAnalisis(analisisPaciente, carpetaSalida);
+                        JOptionPane.showMessageDialog(this, "Informe de análisis generado correctamente.", "Informe Generado", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "El número de ID de paciente ingresado no tiene análisis asociados.", "No Hay Análisis", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Ingrese un número de ID de paciente válido.", "Campo Vacío", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número válido para el ID de paciente.", "Error de Entrada", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_DocumentosBtnActionPerformed
 
     /**
