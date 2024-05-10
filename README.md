@@ -39,4 +39,5 @@ El proyecto se organiza en los siguientes directorios:
 - 📁 build: Contiene los archivos de construcción del proyecto.
 - 📄 README.md: Documentación del proyecto.
 - 📄 manidest.mf: Manifiesto del proyecto.
+- 📄 Database.pdf: Representa las Tablas y relaciones de la BD
 - 📄 build.xml: Archivo de configuración de Apache Ant.
