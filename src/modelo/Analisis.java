@@ -2,7 +2,6 @@ package modelo;
 import java.util.Date;
 
 public class Analisis {
-    private int id;
     private int idPaciente;
     private String tipoAnalisis;
     private Date fechaRealizacion;
@@ -11,8 +10,7 @@ public class Analisis {
     private String resultado;
     
     // Constructor
-    public Analisis(int id, int idPaciente, String tipoAnalisis, Date fechaRealizacion, int medicoSolicitante, int enfermeroRealizador, String resultado) {
-        this.id = id;
+    public Analisis(int idPaciente, String tipoAnalisis, Date fechaRealizacion, int medicoSolicitante, int enfermeroRealizador, String resultado) {
         this.idPaciente = idPaciente;
         this.tipoAnalisis = tipoAnalisis;
         this.fechaRealizacion = fechaRealizacion;
@@ -22,14 +20,6 @@ public class Analisis {
     }
     
     // Getters y setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getIdPaciente() {
         return idPaciente;
     }

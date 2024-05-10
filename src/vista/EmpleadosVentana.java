@@ -4,16 +4,18 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Johan
  */
-public class DoctorVentana extends javax.swing.JFrame {
+public class EmpleadosVentana extends javax.swing.JFrame {
 
     /**
      * Creates new form DoctorVentana
      */
-    public DoctorVentana() {
+    public EmpleadosVentana() {
         initComponents();
     }
 
@@ -27,30 +29,105 @@ public class DoctorVentana extends javax.swing.JFrame {
     private void initComponents() {
 
         Fondo = new javax.swing.JPanel();
+        TitleWelcome = new javax.swing.JLabel();
+        AnalisisBtn = new javax.swing.JButton();
+        Pacientesbtn = new javax.swing.JButton();
+        DocumentosBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        HistCliniTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 500));
 
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        TitleWelcome.setText("Bienvenido, Empleado");
+
+        AnalisisBtn.setText("Analisis");
+        AnalisisBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnalisisBtnActionPerformed(evt);
+            }
+        });
+
+        Pacientesbtn.setText("Pacientes");
+
+        DocumentosBtn.setText("Documentos");
+
+        HistCliniTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id_paciente", "fecha_realizacion", "medico_solicitante", "enfermero_realizador", "resultado", "id_usuario_medico", "id_usuario_enfermero"
+            }
+        ));
+        jScrollPane1.setViewportView(HistCliniTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(497, Short.MAX_VALUE)
-                .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(TitleWelcome))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(AnalisisBtn)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(464, 464, 464)
+                        .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Pacientesbtn)
+                        .addGap(31, 31, 31)
+                        .addComponent(DocumentosBtn)))
                 .addGap(247, 247, 247))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(309, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(TitleWelcome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AnalisisBtn)
+                    .addComponent(Pacientesbtn)
+                    .addComponent(DocumentosBtn))
+                .addGap(33, 33, 33)
                 .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(167, 167, 167))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AnalisisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalisisBtnActionPerformed
+        // Mostrar un cuadro de diálogo de confirmación
+        int opcion = JOptionPane.showConfirmDialog(this, "¿Desea consultar un análisis?", "Seleccionar Opción", JOptionPane.YES_NO_OPTION);
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            // Abrir la ventana de consulta de análisis
+            ConsultaAnalisisVentana consultaAnalisisVentana = new ConsultaAnalisisVentana();
+            consultaAnalisisVentana.setVisible(true);
+        } else if (opcion == JOptionPane.NO_OPTION) {
+            // Abrir la ventana de registro de análisis
+            RegistroAnalisisVentana registroAnalisisVentana = new RegistroAnalisisVentana();
+            registroAnalisisVentana.setVisible(true);
+        }
+    }//GEN-LAST:event_AnalisisBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -69,25 +146,32 @@ public class DoctorVentana extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DoctorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpleadosVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DoctorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpleadosVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DoctorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpleadosVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DoctorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpleadosVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DoctorVentana().setVisible(true);
+                new EmpleadosVentana().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AnalisisBtn;
+    private javax.swing.JButton DocumentosBtn;
     private javax.swing.JPanel Fondo;
+    private javax.swing.JTable HistCliniTable;
+    private javax.swing.JButton Pacientesbtn;
+    private javax.swing.JLabel TitleWelcome;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

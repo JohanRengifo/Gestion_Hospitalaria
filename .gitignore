@@ -1,5 +1,10 @@
-/src/beta
 /nbproject
+/build/
 /test
 /build.xml
 /manifest.mf
+/dist/
+*build.xml
+*manifest.mf
+*README.md
+*PorCorregir.txt

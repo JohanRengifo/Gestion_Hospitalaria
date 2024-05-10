@@ -154,12 +154,12 @@ public class Login extends javax.swing.JFrame {
                     break;
                 case enfermero:
                     // Abrir ventana para enfermeros
-                    EnfermeroVentana enfermeroVentana = new EnfermeroVentana(); 
+                    EmpleadosVentana enfermeroVentana = new EmpleadosVentana(); 
                     enfermeroVentana.setVisible(true);
                     break;
                 case doctor:
                     // Abrir ventana para doctores
-                    DoctorVentana doctorVentana = new DoctorVentana(); 
+                    EmpleadosVentana doctorVentana = new EmpleadosVentana(); 
                     doctorVentana.setVisible(true);
                     break;
                 default:
